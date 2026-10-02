@@ -53,6 +53,7 @@ jobs:
 
       - name: OWASP ZAP baseline passive scan
         run: |
+          chmod a+w "$PWD"  # the ZAP container runs as a non-root user
           set +e
           docker run --rm --network host \
             -v "$PWD:/zap/wrk/:rw" \
@@ -64,6 +65,7 @@ jobs:
           code=$?
           set -e
           # ZAP baseline: 0=OK, 1=FAIL, 2=WARN. WARN is triaged; FAIL and scanner errors block.
+          test -f zap-report.json || { echo 'ZAP report was not generated'; exit 1; }
           if [ "$code" -eq 1 ]; then exit 1; fi
           if [ "$code" -ne 0 ] && [ "$code" -ne 2 ]; then exit "$code"; fi
 
