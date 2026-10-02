@@ -1,0 +1,31 @@
+................                                                         [100%]D:\_infnet\26E3_26E4\Desenvolvimento Seguro de Aplicações Web\_codigo\at\.venv\Lib\site-packages\_pytest\unraisableexception.py:33: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x000001DF96B5A5C0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.13.15-final-0 _______________
+
+Name                            Stmts   Miss  Cover   Missing
+-------------------------------------------------------------
+app\__init__.py                     0      0   100%
+app\config.py                      28      0   100%
+app\database.py                    11      2    82%   15-16
+app\main.py                        25      0   100%
+app\models\__init__.py              0      0   100%
+app\models\entities.py             33      0   100%
+app\models\schemas.py              45      4    91%   23, 36-38
+app\routes\__init__.py              0      0   100%
+app\routes\admin.py                12      4    67%   15-19
+app\routes\appointments.py         69     33    52%   17, 27, 31, 33, 53-66, 77, 80, 83-88, 97-105
+app\routes\auth.py                 29      3    90%   33, 35, 56
+app\routes\partner.py              13      2    85%   22-30
+app\routes\web.py                  20      0   100%
+app\security\__init__.py            0      0   100%
+app\security\auth.py               70     15    79%   33, 56-57, 61-64, 70-72, 76-78, 101, 114
+app\security\authorization.py      23      4    83%   11, 15, 19, 30
+app\security\middleware.py         14      0   100%
+app\security\rate_limit.py         30      3    90%   21, 23, 33
+app\seed.py                        26     17    35%   12-40
+-------------------------------------------------------------
+TOTAL                             448     87    81%
+16 passed in 11.10s

@@ -1,0 +1,59 @@
+Run started:2026-10-02 18:40:07.466101+00:00
+
+Test results:
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'human'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: app\routes\auth.py:42:24
+41	        scopes=scopes,
+42	        token_type="human",
+43	        extra_claims={"uid": user.id},
+44	    )
+45	    return TokenResponse(access_token=token, expires_in=expires_in)
+46	
+47	
+48	@router.post("/m2m-token", response_model=TokenResponse, dependencies=[Depends(login_rate_limit)])
+49	def m2m_token(
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'm2m'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b106_hardcoded_password_funcarg.html
+   Location: app\routes\auth.py:67:24
+66	        scopes=sorted(requested_scopes),
+67	        token_type="m2m",
+68	        extra_claims={"client_id": client_id, "grant_type": "client_credentials"},
+69	    )
+70	    return TokenResponse(access_token=token, expires_in=expires_in)
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'm2m'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: app\security\auth.py:95:21
+94	    token_type = payload.get("token_type")
+95	    if token_type == "m2m":
+96	        return {"kind": "m2m", **payload}
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 574
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 3
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 3
+		High: 0
+Files skipped (0):

@@ -1,0 +1,36 @@
+INFO:     Started server process [32636]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56722 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64228 - "POST /auth/token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64228 - "POST /auth/token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64228 - "POST /auth/token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64228 - "POST /auth/token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64228 - "POST /auth/token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64228 - "POST /auth/token HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:64228 - "POST /auth/token HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:64228 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64228 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59295 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59295 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59296 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59297 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59297 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:62187 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62187 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62189 - "GET /sitemap.xml HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62188 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62189 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:61838 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56364 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60809 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65421 - "GET /docs HTTP/1.1" 200 OK

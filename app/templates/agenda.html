@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Agenda {{ day }}{% endblock %}
+{% block content %}
+<h2>Consultas de {{ day }}</h2>
+<table>
+  <thead><tr><th>Horário</th><th>Paciente</th><th>Profissional</th><th>Status</th><th>Observação</th></tr></thead>
+  <tbody>
+  {% for appointment in appointments %}
+    <tr>
+      <td>{{ appointment.scheduled_at }}</td>
+      <td>{{ appointment.patient_id }}</td>
+      <td>{{ appointment.professional_id }}</td>
+      <td>{{ appointment.status }}</td>
+      <td>{{ appointment.patient_comment or "" }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5">Sem consultas.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

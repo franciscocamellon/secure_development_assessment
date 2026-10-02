@@ -1,0 +1,78 @@
+name: devsecops
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-and-security:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Unit and security tests
+        env:
+          JWT_SECRET: test-secret-that-is-long-enough-for-ci-123456
+          DATABASE_URL: sqlite:///./ci.db
+          SEED_DEMO_DATA: 'false'
+          LAB_CLIENT_SECRET: test-lab-client-secret-12345
+        run: pytest -q --cov=app --cov-report=term-missing
+
+      - name: Static analysis (SAST)
+        run: |
+          bandit -r app -f json -o bandit.json || true
+          python scripts/security_gate.py bandit.json
+
+      - name: Dependency audit (SCA)
+        run: pip-audit -r requirements.txt
+
+      - name: Lint
+        run: ruff check app tests
+
+      - name: Start API for passive DAST
+        env:
+          JWT_SECRET: test-secret-that-is-long-enough-for-ci-123456
+          DATABASE_URL: sqlite:///./zap.db
+          SEED_DEMO_DATA: 'false'
+          LAB_CLIENT_SECRET: test-lab-client-secret-12345
+        run: |
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 > uvicorn.log 2>&1 &
+          sleep 5
+          curl --fail http://127.0.0.1:8000/health
+
+      - name: OWASP ZAP baseline passive scan
+        run: |
+          set +e
+          docker run --rm --network host \
+            -v "$PWD:/zap/wrk/:rw" \
+            ghcr.io/zaproxy/zaproxy:stable \
+            zap-baseline.py -t http://127.0.0.1:8000 \
+              -c .zap/rules.tsv \
+              -r zap-report.html \
+              -J zap-report.json -a -j
+          code=$?
+          set -e
+          # ZAP baseline: 0=OK, 1=FAIL, 2=WARN. WARN is triaged; FAIL and scanner errors block.
+          if [ "$code" -eq 1 ]; then exit 1; fi
+          if [ "$code" -ne 0 ] && [ "$code" -ne 2 ]; then exit "$code"; fi
+
+      - name: Upload security artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-reports
+          path: |
+            bandit.json
+            zap-report.html
+            zap-report.json

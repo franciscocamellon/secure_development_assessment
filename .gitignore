@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+*.db
+bandit.json
+pip-audit.json
+zap-report.html
+zap-report.json

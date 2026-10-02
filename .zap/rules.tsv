@@ -1,0 +1,7 @@
+# ZAP baseline rule handling. FAIL = blocks; WARN = record for triage.
+# Rule IDs may be adjusted to the exact ZAP version used by the course lab.
+10020	FAIL	X-Frame-Options Header Scanner
+10021	FAIL	X-Content-Type-Options Header Missing
+10035	WARN	Strict-Transport-Security Header Scanner
+10038	WARN	Content Security Policy Header Not Set
+10015	WARN	Incomplete or No Cache-control Header Set

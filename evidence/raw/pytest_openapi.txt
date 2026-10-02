@@ -1,0 +1,12 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.15, pytest-8.4.2, pluggy-1.6.0 -- D:\_infnet\26E3_26E4\Desenvolvimento Seguro de Aplicações Web\_codigo\at\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\_infnet\26E3_26E4\Desenvolvimento Seguro de Aplicações Web\_codigo\at
+configfile: pyproject.toml
+plugins: anyio-4.15.1, platformdirs-4.12.2, cov-6.3.0
+collecting ... collected 2 items
+
+tests/test_openapi.py::test_openapi_declares_bearer_security PASSED      [ 50%]
+tests/test_openapi.py::test_sensitive_internal_fields_not_in_public_schema PASSED [100%]
+
+============================== 2 passed in 0.06s ==============================

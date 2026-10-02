@@ -1,0 +1,39 @@
+INFO:     Started server process [39976]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:65087 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /appointments/ HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58239 - "POST /appointments/ HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58239 - "GET /appointments/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "GET /internal/agenda?day=2026-10-05 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /auth/token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:58239 - "POST /auth/token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:58239 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "GET /admin/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "GET /admin/users HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "GET /appointments/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "GET /appointments/2 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "PATCH /appointments/2 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "DELETE /appointments/2 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "GET /appointments/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /auth/m2m-token HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /auth/m2m-token HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "POST /auth/m2m-token HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:58239 - "GET /partner/availability?professional_id=1&start=2026-10-05T00%3A00%3A00%2B00%3A00&end=2026-10-05T23%3A59%3A59%2B00%3A00 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "POST /appointments/ HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "GET /appointments/1 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "GET /partner/availability?professional_id=1&start=2026-10-05T00%3A00%3A00%2B00%3A00&end=2026-10-05T23%3A59%3A59%2B00%3A00 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58239 - "POST /appointments/ HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58239 - "POST /appointments/ HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58239 - "POST /appointments/ HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58239 - "POST /appointments/ HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58239 - "PATCH /appointments/1 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58239 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "OPTIONS /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58239 - "OPTIONS /appointments/ HTTP/1.1" 400 Bad Request

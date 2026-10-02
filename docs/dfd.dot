@@ -1,0 +1,33 @@
+digraph DFD {
+  graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.55", ranksep="0.75", fontname="Arial"];
+  node [shape=box, style="rounded,filled", fillcolor="#EEF5FB", color="#376A9B", fontname="Arial", fontsize=11];
+  edge [color="#4A4A4A", fontname="Arial", fontsize=9];
+
+  subgraph cluster_clients {
+    label="Trust Boundary 1 — Clientes / Internet";
+    color="#8AA9C4"; style="rounded,dashed";
+    human [label="Profissional / Recepção / Admin"];
+    frontend [label="Frontend JSON"];
+    lab [label="Laboratório parceiro\n(M2M)"];
+  }
+
+  subgraph cluster_app {
+    label="Trust Boundary 2 — Aplicação";
+    color="#8AA9C4"; style="rounded,dashed";
+    api [label="FastAPI\nAuth + Scopes + RBAC + Ownership", fillcolor="#DCEAF7"];
+    html [label="Jinja2\nAuto-escape"];
+  }
+
+  subgraph cluster_data {
+    label="Trust Boundary 3 — Dados sensíveis";
+    color="#8AA9C4"; style="rounded,dashed";
+    db [shape=cylinder, label="Banco SQL\nPacientes / Profissionais / Consultas", fillcolor="#F7EFE0", color="#9B7A37"];
+  }
+
+  human -> api [label="HTTPS + JWT\n(dados de saúde)"];
+  frontend -> api [label="HTTPS / JSON"];
+  lab -> api [label="Client Credentials\nJWT M2M / scope mínimo"];
+  api -> db [label="SQLModel\nqueries parametrizadas"];
+  api -> html [label="dados da agenda"];
+  html -> human [label="HTML interno\nescapado"];
+}
